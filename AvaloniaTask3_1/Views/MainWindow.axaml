@@ -1,0 +1,89 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:AvaloniaTask3_1.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="AvaloniaTask3_1.Views.MainWindow"
+        Title="Моделирование добычи нефти">
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
+    
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*,300" Margin="10">
+        <!-- Заголовок -->
+        <TextBlock Grid.ColumnSpan="2" Text="Моделирование нефтяного месторождения" 
+                   FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+        
+        <!-- Основное содержимое -->
+        <ScrollViewer Grid.Row="1" Grid.Column="0" Margin="0,0,10,0">
+            <ItemsControl ItemsSource="{Binding Pumps}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="10" Margin="5"
+                                Background="{Binding IsOnFire, Converter={StaticResource BoolToRedBrushConverter}}">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding CurrentOil, StringFormat='Нефти: {0:0.00} баррелей'}"/>
+                                <TextBlock Text="{Binding IsWorking, Converter={StaticResource BoolToStatusConverter}}"/>
+                                <TextBlock Text="ПОЖАР!" FontWeight="Bold" Foreground="Red"
+                                           IsVisible="{Binding IsOnFire}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        
+        <!-- Панель информации -->
+        <Border Grid.Row="1" Grid.Column="1" BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="10">
+            <StackPanel>
+                <TextBlock Text="Информация" FontWeight="Bold" Margin="0,0,0,10"/>
+                
+                <TextBlock Text="Механики:" FontWeight="Bold"/>
+                <ItemsControl ItemsSource="{Binding Mechanics}" Margin="0,0,0,10">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                
+                <TextBlock Text="Погрузчики:" FontWeight="Bold"/>
+                <ItemsControl ItemsSource="{Binding Loaders}" Margin="0,0,0,10">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                
+                <TextBlock Text="{Binding TotalOilCollected, StringFormat='Всего нефти собрано: {0:0.00} баррелей'}" 
+                           FontWeight="Bold" Margin="0,0,0,10"/>
+            </StackPanel>
+        </Border>
+        
+        <!-- Лог -->
+        <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" 
+                 Text="{Binding LogText}" IsReadOnly="True" 
+                 AcceptsReturn="True" TextWrapping="Wrap"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 Height="150" Margin="0,10,0,0"/>
+        
+        <!-- Панель управления -->
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Добавить вышку" Command="{Binding AddPumpCommand}" Margin="0,0,5,0"/>
+            <Button Content="Запустить все" Command="{Binding StartAllCommand}" Margin="0,0,5,0"/>
+            <Button Content="Остановить все" Command="{Binding StopAllCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>

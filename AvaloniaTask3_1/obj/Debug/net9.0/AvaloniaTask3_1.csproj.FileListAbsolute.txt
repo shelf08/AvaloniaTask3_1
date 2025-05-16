@@ -1,0 +1,7 @@
+C:\Users\viplo\RiderProjects\AvaloniaTask3_1\AvaloniaTask3_1\obj\Debug\net9.0\AvaloniaTask3_1.csproj.AssemblyReference.cache
+C:\Users\viplo\RiderProjects\AvaloniaTask3_1\AvaloniaTask3_1\obj\Debug\net9.0\Avalonia\Resources.Inputs.cache
+C:\Users\viplo\RiderProjects\AvaloniaTask3_1\AvaloniaTask3_1\obj\Debug\net9.0\Avalonia\resources
+C:\Users\viplo\RiderProjects\AvaloniaTask3_1\AvaloniaTask3_1\obj\Debug\net9.0\AvaloniaTask3_1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\viplo\RiderProjects\AvaloniaTask3_1\AvaloniaTask3_1\obj\Debug\net9.0\AvaloniaTask3_1.AssemblyInfoInputs.cache
+C:\Users\viplo\RiderProjects\AvaloniaTask3_1\AvaloniaTask3_1\obj\Debug\net9.0\AvaloniaTask3_1.AssemblyInfo.cs
+C:\Users\viplo\RiderProjects\AvaloniaTask3_1\AvaloniaTask3_1\obj\Debug\net9.0\AvaloniaTask3_1.csproj.CoreCompileInputs.cache

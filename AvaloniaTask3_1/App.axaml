@@ -1,0 +1,11 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="using:AvaloniaTask3_1.Converters"
+             x:Class="AvaloniaTask3_1.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <converters:BoolToStatusConverter x:Key="BoolToStatusConverter"/>
+            <converters:BoolToRedBrushConverter x:Key="BoolToRedBrushConverter"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
